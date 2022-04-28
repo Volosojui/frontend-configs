@@ -1,21 +1,13 @@
 const path = require('path');
 
-const IGNORE_FILENAMES = ['.lintstagedrc.js'];
-
 const buildEslintCommand = (filenames) => {
-  const filenamesList = filenames
-    .map((f) => path.relative(process.cwd(), f))
-    .filter((f) => !IGNORE_FILENAMES.includes(f));
+  const filenamesList = filenames.map((f) => path.relative(process.cwd(), f));
 
-  if (filenamesList.length) {
-    return `next lint --fix --file ${filenamesList.join(' --file ')}`;
-  }
-
-  return undefined;
+  return `next lint --fix --file ${filenamesList.join(' --file ')}`;
 };
 
 module.exports = {
-  '**.*{ts,tsx}': 'tsc-files --pretty --noEmit',
-  '**/*.{js,jsx,ts,tsx}': [buildEslintCommand, 'prettier --write'].filter(Boolean),
+  '**/*.{ts,tsx}': () => 'tsc --project tsconfig.json --pretty --noEmit',
+  '**/*.{js,jsx,ts,tsx}': [buildEslintCommand, 'prettier --write'],
   '**/*.{md,mdx,json}': ['prettier --write'],
 };
