@@ -6,7 +6,18 @@ module.exports = {
     'import/order': [
       'error', { 
         groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'], 
-        'newlines-between': 'always', 
+        'newlines-between': 'always',
+        pathGroups: [
+          { 
+            pattern: '@/**', 
+            group: 'internal', 
+          }, 
+          { 
+            pattern: './*.{css,scss}', 
+            group: 'index', 
+            position: 'after', 
+          }, 
+        ],
       }, 
     ], 
   },
