@@ -9,4 +9,5 @@
 
 ## Next.js
 - [eslint](https://github.com/Volosojui/frontend-configs/tree/main/next.js/eslint/index.js)
+- [eslint](https://github.com/Volosojui/frontend-configs/tree/main/next.js/eslint/typescript.js) `typescript`
 - [lint-staged](https://github.com/Volosojui/frontend-configs/tree/main/next.js/lint-staged/index.js)
